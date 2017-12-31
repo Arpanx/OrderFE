@@ -1,0 +1,29 @@
+<td>
+    <div class="divTableCell">
+        <span>{{item.id}}</span>
+    </div>
+</td>
+<td>
+    <div class="divTableCell">
+        <input [(ngModel)]="item.name" placeholder="name">
+    </div>
+</td>
+<td>
+    <div class="divTableCell">
+        <!-- <input [value]="item.description" placeholder="description"> -->
+        <input [(ngModel)]="item.city" placeholder="city">
+    </div>
+</td>
+<td>
+    <div class="divTableCell">
+        <input [(ngModel)]="item.address" placeholder="address">
+    </div>
+</td>
+<td>
+    <div class="divTableCell">
+        <span class="btn-group">
+            <button (click)="toggleToDisplay()" class="btn btn-success">Save</button>
+            <button (click)="toggleToDisplay();deleteOrder()" class="btn btn-danger ml-1">Delete</button>
+        </span>
+    </div>
+</td>
