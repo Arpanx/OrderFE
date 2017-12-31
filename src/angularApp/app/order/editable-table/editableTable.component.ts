@@ -95,10 +95,8 @@ export class EditableTableComponent implements OnChanges, OnInit {
                 this.orders = data.body;
                 this.displayingIndeces = new Array(this.orders.length);
                 this.displayingIndeces.fill(true);
-                data.headers.get('Pagination');
-                // const _temp = JSON.parse('sds');
-                // const obj: ServerHeaderResponse | null = temp;
-                // this.count = Number(obj.TotalItems);
+                const obj: ServerHeaderResponse  = JSON.parse(data.headers.get('Pagination'));
+                this.count = Number(obj.TotalItems);
             },
             error => console.log(error),
             // () => console.log('Get all complete')
