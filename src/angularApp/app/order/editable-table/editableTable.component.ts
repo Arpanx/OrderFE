@@ -10,8 +10,6 @@ import { Order } from '../../models/order';
 })
 
 export class EditableTableComponent implements OnChanges, OnInit {
-    constructor(private orderService: OrderService) {
-   }
     orders: Order[] = [];
     order: Order = new Order();
     p = 1;
@@ -20,6 +18,9 @@ export class EditableTableComponent implements OnChanges, OnInit {
     tableHeader = {id: '#',  name: 'FIO', city: 'City', address: 'Address' };
 
     displayingIndeces: boolean[];
+
+    constructor(private orderService: OrderService) {
+    }
 
     addNewOrder(_event: number) {
         this.orders.push(new Order());
