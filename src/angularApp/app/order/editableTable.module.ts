@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { EditableTableRoutes } from '../order/editableTable.routes';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Form1Component } from './form1/form1.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
         EditableTableComponent,
         EditableRowComponent,
         DisplayHeaderComponent,
-        DisplayRowComponent
+        DisplayRowComponent,
+        Form1Component
     ],
 
     exports: [

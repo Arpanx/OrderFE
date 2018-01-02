@@ -16,6 +16,7 @@ export class EditableTableComponent implements OnChanges, OnInit {
     tempstr: string;
     count = 10;
     tableHeader = {id: '#',  name: 'FIO', city: 'City', address: 'Address' };
+    NullableString?: string | undefined;
 
     displayingIndeces: boolean[];
 
@@ -96,7 +97,8 @@ export class EditableTableComponent implements OnChanges, OnInit {
                 this.orders = data.body;
                 this.displayingIndeces = new Array(this.orders.length);
                 this.displayingIndeces.fill(true);
-                const obj: ServerHeaderResponse  = JSON.parse(data.headers.get('Pagination'));
+                this.NullableString = data.headers.get('Pagination') || 'Pagination: 1,10';
+                const obj: ServerHeaderResponse  = JSON.parse(this.NullableString);
                 this.count = Number(obj.TotalItems);
             },
             error => console.log(error),

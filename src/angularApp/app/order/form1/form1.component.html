@@ -1,0 +1,21 @@
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</label>
+                <input type="text" class="form-control" name="location" required />
+            </div>
+
+            <div class="col-md-4 selectContainer">
+                <label class="control-label"><i class="fa fa-spinner" aria-hidden="true"></i>Status</label>
+                <select class="form-control" name="status">
+                    <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                </select>
+            </div>
+            <div class="col-md-4 selectContainer">
+                <label class="control-label"><i class="fa fa-tag" aria-hidden="true"></i>Type</label>
+                <select class="form-control" name="type">
+                    <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
