@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EditableTableRoutes } from '../order/editableTable.routes';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
         ReactiveFormsModule,
         NgxPaginationModule,
         EditableTableRoutes,
+        AngularFontAwesomeModule,
     ],
     declarations: [
         EditableTableComponent,
