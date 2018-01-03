@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrls: ['items-editable-row.component.scss']
 })
 export class ItemsEditableRowComponent {
-    @Input() item: { id: number, name: string, city: string, address: string };
+    @Input() item: { id: number, productName: string, city: string, address: string };
     @Output() onToggleDisplay = new EventEmitter<any>();
     @Output() onDeleteOrder = new EventEmitter<any>();
 

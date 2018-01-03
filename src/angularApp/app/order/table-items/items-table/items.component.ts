@@ -15,7 +15,7 @@ export class ItemsComponent implements OnChanges, OnInit {
     p = 1;
     tempstr: string;
     count = 10;
-    tableHeader = {id: '#',  name: 'FIO', city: 'City', address: 'Address' };
+    tableHeader = {id: '#',  productName: 'productName', timeStart: 'timeStart', address: 'Address' };
     NullableString?: string | undefined;
 
     displayingIndeces: boolean[];

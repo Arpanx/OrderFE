@@ -15,7 +15,7 @@ export class ItemService {
 
     constructor(private http: HttpClient, configuration: Configuration) {
 
-        this.actionUrl = configuration.Server + 'api/order/';
+        this.actionUrl = configuration.Server + 'api/item/';
 
         this.headers = new HttpHeaders();
         this.headers = this.headers.set('Content-Type', 'application/json');
@@ -37,7 +37,8 @@ export class ItemService {
     }
 
     add(thingToAdd: Item): Observable<Item> {
-        const toAdd = JSON.stringify({ name: thingToAdd.name, city: thingToAdd.city, address: thingToAdd.address });
+        const toAdd = JSON.stringify({ productName: thingToAdd.productName, description: thingToAdd.description,
+            location: thingToAdd.location });
         return this.http.post<Item>(this.actionUrl, toAdd, { headers: this.headers });
     }
 
