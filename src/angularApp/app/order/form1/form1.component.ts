@@ -11,7 +11,7 @@ export class Form1Component implements OnInit {
     types: string[] = ['Type1', 'Type2', 'Type3'];
 
     ngOnInit() {
-        this.schedule.timeStart = new Date(); // new DateFormatPipe().transform(schedule.timeStart, ['local']);
-        this.schedule.timeEnd = new Date(); // new DateFormatPipe().transform(schedule.timeEnd, ['local']);
+        // this.schedule.timeStart = new Date(); // new DateFormatPipe().transform(schedule.timeStart, ['local']);
+        // this.schedule.timeEnd = new Date(); // new DateFormatPipe().transform(schedule.timeEnd, ['local']);
     }
 }

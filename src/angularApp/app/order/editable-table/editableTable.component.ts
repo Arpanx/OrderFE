@@ -23,6 +23,10 @@ export class EditableTableComponent implements OnChanges, OnInit {
     constructor(private orderService: OrderService) {
     }
 
+    first(_event: number) {
+        console.log(_event);
+    }
+
     addNewOrder(_event: number) {
         this.orders.push(new Order());
     }
