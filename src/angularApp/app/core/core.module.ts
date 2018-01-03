@@ -1,8 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { OrderService } from './services/order-data.service';
+import { ItemService } from './services/item-data.service';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { Configuration } from '../app.constants';
+
 
 @NgModule({
     imports: [
@@ -17,6 +19,7 @@ export class CoreModule {
             ngModule: CoreModule,
             providers: [
                 OrderService,
+                ItemService,
                 Configuration
             ]
         };

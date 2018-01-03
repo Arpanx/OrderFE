@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { OnChanges, OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { OrderService } from '../../core/services/order-data.service';
-import { Order } from '../../models/order';
+import { ItemService } from '../../../core/services/item-data.service';
+import { Item } from '../../../models/item';
 
 @Component({
-    selector: 'app-editable-table',
-    templateUrl: 'editableTable.component.html',
-    styleUrls: ['editableTable.component.scss']
+    selector: 'app-items-table',
+    templateUrl: 'items.component.html',
+    styleUrls: ['items.component.scss']
 })
 
-export class EditableTableComponent implements OnChanges, OnInit {
-    orders: Order[] = [];
-    order: Order = new Order();
+export class ItemsComponent implements OnChanges, OnInit {
+    items: Item[] = [];
+    item: Item = new Item();
     p = 1;
     tempstr: string;
     count = 10;
@@ -20,7 +20,7 @@ export class EditableTableComponent implements OnChanges, OnInit {
 
     displayingIndeces: boolean[];
 
-    constructor(private orderService: OrderService) {
+    constructor(private itemService: ItemService) {
     }
 
     first(_event: number) {
@@ -28,10 +28,10 @@ export class EditableTableComponent implements OnChanges, OnInit {
     }
 
     addNewOrder(_event: number) {
-        this.orders.push(new Order());
+        this.items.push(new Item());
     }
 
-    updateOrderCheckId(order: Order) {
+    updateOrderCheckId(order: Item) {
         if (!isNaN(order.id)) {
             this.updateOrder(order);
         } else {
@@ -57,34 +57,34 @@ export class EditableTableComponent implements OnChanges, OnInit {
     }
 
     ngOnChanges() {
-        this.displayingIndeces = new Array(this.orders.length);
+        this.displayingIndeces = new Array(this.items.length);
         this.displayingIndeces.fill(true);
     }
 
-    addOrder(order: Order) {
-        this.orderService
+    addOrder(order: Item) {
+        this.itemService
             .add(order)
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
-                this.order = new Order();
+                this.item = new Item();
             }, (error) => {
                 console.log(error);
             });
     }
 
-    updateOrder(order: Order) {
-        this.orderService
+    updateOrder(order: Item) {
+        this.itemService
             .update(order.id, order)
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
-                this.order = new Order();
+                this.item = new Item();
             }, (error) => {
                 console.log(error);
             });
     }
 
-    deleteOrder(order: Order) {
-        this.orderService
+    deleteOrder(order: Item) {
+        this.itemService
             .delete(order.id)
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
@@ -94,12 +94,12 @@ export class EditableTableComponent implements OnChanges, OnInit {
     }
 
     getAllOrders(startPage: number, pageSize: number) {
-        this.orderService
+        this.itemService
             .getAllNew(startPage, pageSize)
             .subscribe(
             data => {
-                this.orders = data.body;
-                this.displayingIndeces = new Array(this.orders.length);
+                this.items = data.body;
+                this.displayingIndeces = new Array(this.items.length);
                 this.displayingIndeces.fill(true);
                 this.NullableString = data.headers.get('Pagination') || 'Pagination: 1,10';
                 const obj: ServerHeaderResponse  = JSON.parse(this.NullableString);
