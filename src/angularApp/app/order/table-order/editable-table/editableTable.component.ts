@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnChanges, OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { OrderService } from '../../../core/services/order-data.service';
 import { Order } from '../../../models/order';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-editable-table',
@@ -17,8 +18,8 @@ export class EditableTableComponent implements OnChanges, OnInit {
     count = 10;
     tableHeader = {id: '#',  name: 'FIO', city: 'City', address: 'Address' };
     NullableString?: string | undefined;
-
     displayingIndeces: boolean[];
+    model: NgbDateStruct;
 
     constructor(private orderService: OrderService) {
     }

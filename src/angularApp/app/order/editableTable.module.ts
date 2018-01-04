@@ -11,8 +11,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EditableTableRoutes } from '../order/editableTable.routes';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Form1Component } from './form1/form1.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { Form1Component } from './form1/form1.component';
         ReactiveFormsModule,
         NgxPaginationModule,
         EditableTableRoutes,
-        AngularFontAwesomeModule,
+   //     AngularFontAwesomeModule,
+        NgbModule.forRoot(),
     ],
     declarations: [
         EditableTableComponent,

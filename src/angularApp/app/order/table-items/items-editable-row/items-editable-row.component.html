@@ -5,18 +5,23 @@
 </td>
 <td>
     <div class="divTableCell">
-        <input [(ngModel)]="item.productName" placeholder="productName">
+        <input class="form-control" [(ngModel)]="item.productName" placeholder="productName">
     </div>
 </td>
 <td>
     <div class="divTableCell">
         <!-- <input [value]="item.description" placeholder="description"> -->
-        <input [(ngModel)]="item.timeStart" placeholder="timeStart">
+        <!-- <input [(ngModel)]="item.timeStart"   placeholder="timeStart"> -->
+        <input class="form-control" placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+        <button class="input-group-addon" (click)="d.toggle()" type="button">
+        <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+        </button>
     </div>
 </td>
 <td>
     <div class="divTableCell">
-        <input [(ngModel)]="item.address" placeholder="address">
+        <input class="form-control" [(ngModel)]="item.address" placeholder="address">
     </div>
 </td>
 <td>
