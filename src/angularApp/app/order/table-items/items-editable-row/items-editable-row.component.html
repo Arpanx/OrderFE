@@ -12,10 +12,9 @@
     <div class="divTableCell">
         <!-- <input [value]="item.description" placeholder="description"> -->
         <!-- <input [(ngModel)]="item.timeStart"   placeholder="timeStart"> -->
-        <input class="form-control" placeholder="yyyy-mm-dd"
-             name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
         <button class="input-group-addon" (click)="d.toggle()" type="button">
-        <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> 
+            <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
         </button>
     </div>
 </td>
@@ -31,7 +30,12 @@
 </td>
 <td>
     <div class="divTableCell">
-        <input class="form-control" [(ngModel)]="item.type" placeholder="type">
+        <!--- Gender Block -->
+        <div class="form-group">
+            <select class="form-control" name="type" [ngModel]="item.type" (change)="onChange($event.target.value)">
+                <option *ngFor="let type of types" [value]="type"> {{type}}</option>
+            </select>
+        </div>
     </div>
 </td>
 <td>
