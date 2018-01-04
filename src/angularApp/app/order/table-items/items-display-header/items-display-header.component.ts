@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrls: ['items-display-header.component.scss']
 })
 export class ItemsDisplayHeaderComponent {
-    @Input() item: { id: number, productName: string, status: string, location: string, type: string };
+    @Input() item: { id: number, productName: string, timeStart: string, status: string, location: string, type: string };
     @Output()
     addOrder: EventEmitter<number> = new EventEmitter<number>();
 

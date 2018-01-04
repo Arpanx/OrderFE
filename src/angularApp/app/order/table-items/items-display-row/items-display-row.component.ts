@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrls: ['items-display-row.component.scss']
 })
 export class ItemsDisplayRowComponent {
-    @Input() item: { id: number, productName: string, status: string, location: string, type: string };
+    @Input() item: { id: number, productName: string, timeStart: string, status: string, location: string, type: string };
     @Output() onToggleEdit = new EventEmitter<any>();
 
     toggleToEdit() {
