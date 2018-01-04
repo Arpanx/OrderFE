@@ -6,20 +6,22 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     styleUrls: ['items-editable-row.component.scss']
 })
 export class ItemsEditableRowComponent implements OnInit {
-    // Property for the gender
-    // private types: string[];
+
     types: string[] = ['DillerGold', 'DillerSilver', 'Social', 'Retail'];
+    status: string[] = ['Valid', 'Cancelled'];
 
     @Input() item: { id: number, productName: string, status: string, location: string, type: string };
     @Output() onToggleDisplay = new EventEmitter<any>();
     @Output() onDeleteOrder = new EventEmitter<any>();
 
     ngOnInit() {
-        this.types =  ['DillerGold', 'DillerSilver', 'Social', 'Retail'];
-        console.log(this.types);
     }
 
-    onChange(event: any) {
+    onChangeStatus(event: any) {
+        this.item.status = event;
+    }
+
+    onChangeType(event: any) {
         this.item.type = event;
     }
 

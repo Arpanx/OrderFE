@@ -1,6 +1,12 @@
 ﻿@import './styles/app.scss';
 .divTableCell {
     // width: 150px;
+    min-width: 150px;
+    margin: bottom;
+}
+
+.divTableCellLg {
+    // width: 150px;
     min-width: 200px;
     margin: bottom;
 }

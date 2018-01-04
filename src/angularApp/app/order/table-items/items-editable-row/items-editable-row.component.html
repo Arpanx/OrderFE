@@ -9,18 +9,23 @@
     </div>
 </td>
 <td>
-    <div class="divTableCell">
-        <!-- <input [value]="item.description" placeholder="description"> -->
-        <!-- <input [(ngModel)]="item.timeStart"   placeholder="timeStart"> -->
-        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-        <button class="input-group-addon" (click)="d.toggle()" type="button">
-            <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-        </button>
-    </div>
+    <form class="form-inline">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control col-4" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <button class="input-group-addon" (click)="d.toggle()" type="button">
+                    <img src="assets/calendar-icon.svg" style="width: 1rem; height: 1rem; cursor: pointer;" />
+                </button>
+            </div>
+        </div>
+    </form>
 </td>
 <td>
     <div class="divTableCell">
-        <input class="form-control" [(ngModel)]="item.status" placeholder="status">
+        <!-- <input class="form-control" [(ngModel)]="item.status" placeholder="status"> -->
+        <select class="form-control" name="type" [ngModel]="item.status" (change)="onChangeStatus($event.target.value)">
+            <option *ngFor="let stat of status" [value]="stat"> {{stat}}</option>
+        </select>
     </div>
 </td>
 <td>
@@ -30,12 +35,9 @@
 </td>
 <td>
     <div class="divTableCell">
-        <!--- Gender Block -->
-        <div class="form-group">
-            <select class="form-control" name="type" [ngModel]="item.type" (change)="onChange($event.target.value)">
-                <option *ngFor="let type of types" [value]="type"> {{type}}</option>
-            </select>
-        </div>
+        <select class="form-control" name="type" [ngModel]="item.type" (change)="onChangeType($event.target.value)">
+            <option *ngFor="let type of types" [value]="type"> {{type}}</option>
+        </select>
     </div>
 </td>
 <td>
