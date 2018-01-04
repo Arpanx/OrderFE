@@ -14,6 +14,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Form1Component } from './form1/form1.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { Ng2FlatpickrComponent } from 'ng2-flatpickr/ng2-flatpickr';
+
 
 @NgModule({
     imports: [
