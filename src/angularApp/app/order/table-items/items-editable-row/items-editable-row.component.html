@@ -9,19 +9,19 @@
     </div>
 </td>
 <td>
-<!-- [setDate]="DateObjectStart"  [setDate]="DateObjectEnd" -->
     <div class="divTableCell">
-        <ng2-flatpickr  [config]="exampleOptions" (change)="onChangeDatePickerStart($event)"></ng2-flatpickr>
+        <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [bsValue]="bsStart"
+            (bsValueChange)="onChangeDatePickerStart($event)">
     </div>
 </td>
 <td>
     <div class="divTableCell">
-        <ng2-flatpickr  [config]="exampleOptions" (change)="onChangeDatePickerEnd($event)"></ng2-flatpickr>
+        <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker" bsDatepicker [bsValue]="bsEnd"
+            (bsValueChange)="onChangeDatePickerEnd($event)">
     </div>
 </td>
 <td>
     <div class="divTableCell">
-        <!-- <input class="form-control" [(ngModel)]="item.status" placeholder="status"> -->
         <select class="form-control" name="type" [ngModel]="item.status" (change)="onChangeStatus($event.target.value)">
             <option *ngFor="let stat of status" [value]="stat"> {{stat}}</option>
         </select>
@@ -47,4 +47,3 @@
         </span>
     </div>
 </td>
-

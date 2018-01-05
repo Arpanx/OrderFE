@@ -41,6 +41,7 @@
     "font-awesome": "^4.7.0",
     "ie-shim": "0.1.0",
     "ng2-flatpickr": "^0.4.0",
+    "ngx-bootstrap": "^2.0.0-rc.0",
     "rxjs": "5.5.6",
     "zone.js": "0.8.19"
   },

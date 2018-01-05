@@ -14,6 +14,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Form1Component } from './form1/form1.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FlatpickrComponent } from 'ng2-flatpickr/ng2-flatpickr';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/bs-moment';
+import { de } from 'ngx-bootstrap/locale';
+defineLocale('de', de);
 
 @NgModule({
     imports: [
@@ -22,6 +26,7 @@ import { Ng2FlatpickrComponent } from 'ng2-flatpickr/ng2-flatpickr';
         ReactiveFormsModule,
         NgxPaginationModule,
         EditableTableRoutes,
+        BsDatepickerModule.forRoot(),
         NgbModule.forRoot(),
     ],
     declarations: [
