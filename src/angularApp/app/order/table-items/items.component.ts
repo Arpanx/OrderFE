@@ -15,6 +15,7 @@ export class ItemsComponent implements OnChanges, OnInit {
     p = 1;
     tempstr: string;
     count = 10;
+
     tableHeader = {id: '#',  productName: 'productName', timeStart: 'timeStart', status: 'status', location: 'location', type: 'type'};
     NullableString?: string | undefined;
     displayingIndeces: boolean[];
@@ -30,11 +31,11 @@ export class ItemsComponent implements OnChanges, OnInit {
         this.items.push(new Item());
     }
 
-    updateOrderCheckId(order: Item) {
-        if (!isNaN(order.id)) {
-            this.updateOrder(order);
+    updateOrderCheckId(item: Item) {
+        if (!isNaN(item.id)) {
+            this.updateOrder(item);
         } else {
-            this.addOrder(order);
+            this.addOrder(item);
         }
     }
 
@@ -60,9 +61,9 @@ export class ItemsComponent implements OnChanges, OnInit {
         this.displayingIndeces.fill(true);
     }
 
-    addOrder(order: Item) {
+    addOrder(item: Item) {
         this.itemService
-            .add(order)
+            .add(item)
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
                 this.item = new Item();
@@ -71,9 +72,9 @@ export class ItemsComponent implements OnChanges, OnInit {
             });
     }
 
-    updateOrder(order: Item) {
+    updateOrder(item: Item) {
         this.itemService
-            .update(order.id, order)
+            .update(item.id, item)
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
                 this.item = new Item();
@@ -82,9 +83,9 @@ export class ItemsComponent implements OnChanges, OnInit {
             });
     }
 
-    deleteOrder(order: Item) {
+    deleteOrder(item: Item) {
         this.itemService
-            .delete(order.id)
+            .delete(item.id)
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
             }, (error) => {
@@ -109,4 +110,3 @@ export class ItemsComponent implements OnChanges, OnInit {
             );
     }
 }
-

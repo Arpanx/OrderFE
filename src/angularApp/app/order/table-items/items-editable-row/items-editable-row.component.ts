@@ -16,7 +16,7 @@ export class ItemsEditableRowComponent implements OnInit {
         dateFormat: 'd-m-Y',
     };
 
-    @Input() item: { id: number, productName: string, timeStart: string, status: string, location: string, type: string };
+    @Input() item: { id: number, productName: string, timeStart: string, timeEnd: string, status: string, location: string, type: string };
     @Output() onToggleDisplay = new EventEmitter<any>();
     @Output() onDeleteOrder = new EventEmitter<any>();
 
@@ -27,9 +27,12 @@ export class ItemsEditableRowComponent implements OnInit {
 
     }
 
-    onChangeDatePicker(event: any) {
+    onChangeDatePickerStart(event: any) {
         this.item.timeStart = event.target.value;
-        // console.log(event.target.value);
+    }
+
+    onChangeDatePickerEnd(event: any) {
+        this.item.timeEnd = event.target.value;
     }
 
     onChangeStatus(event: any) {

@@ -7,8 +7,6 @@ export class Item {
     public location: string;
     public type: string;
     public status: string;
-    public dateCreated: string;
-    public dateUpdated: string;
     public order: string;
     public orderId: number
 }

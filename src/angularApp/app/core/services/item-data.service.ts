@@ -37,8 +37,16 @@ export class ItemService {
     }
 
     add(thingToAdd: Item): Observable<Item> {
-        const toAdd = JSON.stringify({ productName: thingToAdd.productName, description: thingToAdd.description,
-            location: thingToAdd.location });
+        const toAdd = JSON.stringify({
+            productName: thingToAdd.productName,
+            description: thingToAdd.description,
+            timeStart: thingToAdd.timeStart,
+            timeEnd: thingToAdd.timeEnd,
+            location: thingToAdd.location,
+            type: thingToAdd.type,
+            status: thingToAdd.status,
+            orderId:  1,
+        });
         return this.http.post<Item>(this.actionUrl, toAdd, { headers: this.headers });
     }
 
