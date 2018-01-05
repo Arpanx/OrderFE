@@ -21,10 +21,15 @@ export class ItemsEditableRowComponent implements OnInit {
     @Output() onDeleteOrder = new EventEmitter<any>();
 
     constructor(
-      ) {}
+    ) {}
 
     ngOnInit() {
 
+    }
+
+    onChangeDatePicker(event: any) {
+        this.item.timeStart = event.target.value;
+        // console.log(event.target.value);
     }
 
     onChangeStatus(event: any) {

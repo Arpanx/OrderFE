@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnChanges, OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { OrderService } from '../../../core/services/order-data.service';
-import { Order } from '../../../models/order';
+import { OrderService } from '../../core/services/order-data.service';
+import { Order } from '../../models/order';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

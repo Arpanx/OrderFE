@@ -13,7 +13,7 @@
         <!-- <form class="form-inline"> -->
         <!-- <div class="form-group">  -->
         <!-- item.timeStart -->
-        <ng2-flatpickr [config]="exampleOptions"></ng2-flatpickr>
+        <ng2-flatpickr [config]="exampleOptions" (change)="onChangeDatePicker($event)"></ng2-flatpickr>
         <!-- <input class="form-control" id="date" type="date"> -->
         <!-- <div class="input-group"> -->
         <!-- </div> -->

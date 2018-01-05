@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnChanges, OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { ItemService } from '../../../core/services/item-data.service';
-import { Item } from '../../../models/item';
+import { ItemService } from '../../core/services/item-data.service';
+import { Item } from '../../models/item';
 
 @Component({
     selector: 'app-items-table',

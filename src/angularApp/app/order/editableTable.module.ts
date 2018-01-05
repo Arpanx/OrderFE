@@ -1,12 +1,12 @@
 import { ItemsDisplayHeaderComponent } from './table-items/items-display-header/items-display-header.component';
 import { ItemsDisplayRowComponent } from './table-items/items-display-row/items-display-row.component';
 import { ItemsEditableRowComponent } from './table-items/items-editable-row/items-editable-row.component';
-import { ItemsComponent } from './table-items/items-table/items.component';
+import { ItemsComponent } from './table-items/items.component';
 import { DisplayHeaderComponent } from './table-order/display-header/display-header.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { DisplayRowComponent } from './table-order/display-row/display-row.component';
 import { EditableRowComponent } from './table-order/editable-row/editable-row.component';
-import { EditableTableComponent } from './table-order/editable-table/editableTable.component';
+import { EditableTableComponent } from './table-order/editableTable.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EditableTableRoutes } from '../order/editableTable.routes';

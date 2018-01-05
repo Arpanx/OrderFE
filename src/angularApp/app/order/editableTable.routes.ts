@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { EditableTableComponent } from './table-order/editable-table/editableTable.component';
+import { EditableTableComponent } from './table-order/editableTable.component';
 
 const routes: Routes = [
     { path: 'order', component: EditableTableComponent }
