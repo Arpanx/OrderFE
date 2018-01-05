@@ -11,13 +11,12 @@
 <td>
     <div class="divTableCell">
         <!-- <form class="form-inline"> -->
-        <!-- <div class="form-group">  -->  <!-- item.timeStart -->
-        <div class="input-group">
-            <!-- <input class="form-control col-10" placeholder="dd-mm-yyyy" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-            <button class="input-group-addon" (click)="d.toggle()" type="button">
-                <img src="assets/calendar-icon.svg" style="width: 1rem; height: 1rem; cursor: pointer;" />
-            </button> [locale]="en" -->
-        </div>
+        <!-- <div class="form-group">  -->
+        <!-- item.timeStart -->
+        <ng2-flatpickr [config]="exampleOptions"></ng2-flatpickr>
+        <!-- <input class="form-control" id="date" type="date"> -->
+        <!-- <div class="input-group"> -->
+        <!-- </div> -->
         <!-- </div> -->
         <!-- </form> -->
     </div>
@@ -50,3 +49,4 @@
         </span>
     </div>
 </td>
+

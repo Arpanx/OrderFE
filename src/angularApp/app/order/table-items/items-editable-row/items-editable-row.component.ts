@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FlatpickrOptions } from 'ng2-flatpickr/ng2-flatpickr';
+
 
 @Component({
     selector: 'app-items-editable-row',
@@ -9,6 +11,10 @@ export class ItemsEditableRowComponent implements OnInit {
 
     types: string[] = ['DillerGold', 'DillerSilver', 'Social', 'Retail'];
     status: string[] = ['Valid', 'Cancelled'];
+    exampleOptions: FlatpickrOptions = {
+        defaultDate: '01-03-2018',
+        dateFormat: 'd-m-Y',
+    };
 
     @Input() item: { id: number, productName: string, timeStart: string, status: string, location: string, type: string };
     @Output() onToggleDisplay = new EventEmitter<any>();

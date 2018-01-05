@@ -1,6 +1,5 @@
 ﻿import './styles.scss';
 import '../node_modules/flatpickr/dist/flatpickr.min.css';
-// import '../node_modules/ng-pick-datetime/assets/style/picker.min.css';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 // import { platformBrowser } from '@angular/platform-browser';
