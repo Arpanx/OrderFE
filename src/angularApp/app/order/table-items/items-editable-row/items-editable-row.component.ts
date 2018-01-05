@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FlatpickrOptions } from 'ng2-flatpickr/ng2-flatpickr';
+// import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -7,7 +8,10 @@ import { FlatpickrOptions } from 'ng2-flatpickr/ng2-flatpickr';
     templateUrl: 'items-editable-row.component.html',
     styleUrls: ['items-editable-row.component.scss']
 })
-export class ItemsEditableRowComponent implements OnInit {
+export class ItemsEditableRowComponent implements OnInit, OnChanges {
+
+    DateObjectStart: Date = new Date();
+    DateObjectEnd: Date = new Date();
 
     types: string[] = ['DillerGold', 'DillerSilver', 'Social', 'Retail'];
     status: string[] = ['Valid', 'Cancelled'];
@@ -21,18 +25,33 @@ export class ItemsEditableRowComponent implements OnInit {
     @Output() onDeleteOrder = new EventEmitter<any>();
 
     constructor(
-    ) {}
+    ) {
+
+    }
 
     ngOnInit() {
+        this.DateObjectStart = new Date(this.item.timeStart.substr(0, 10));
+        this.DateObjectEnd = new Date(this.item.timeEnd.substr(0, 10));
+    }
+
+    ngOnChanges(_changes: SimpleChanges) {
 
     }
 
     onChangeDatePickerStart(event: any) {
-        this.item.timeStart = event.target.value;
+        const dateString = event.target.value;
+        const thisDateT = dateString.substr(6, 4) + '-' + dateString.substr(3, 2) + '-' + dateString.substr(0, 2);
+        const newDate = new Date(thisDateT);
+        this.item.timeStart = newDate.toISOString();
+        // console.log('date START', newDate.toISOString());
     }
 
     onChangeDatePickerEnd(event: any) {
-        this.item.timeEnd = event.target.value;
+        const dateString = event.target.value;
+        const thisDateT = dateString.substr(6, 4) + '-' + dateString.substr(3, 2) + '-' + dateString.substr(0, 2);
+        const newDate = new Date(thisDateT);
+        this.item.timeEnd = newDate.toISOString();
+        // console.log('date END', newDate.toISOString());
     }
 
     onChangeStatus(event: any) {

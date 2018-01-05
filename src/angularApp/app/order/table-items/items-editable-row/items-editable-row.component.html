@@ -1,5 +1,5 @@
 <td>
-    <div class="col-sm-4">
+    <div class="divTableCell">
         <span>{{item.id}}</span>
     </div>
 </td>
@@ -9,13 +9,14 @@
     </div>
 </td>
 <td>
+<!-- [setDate]="DateObjectStart"  [setDate]="DateObjectEnd" -->
     <div class="divTableCell">
-        <ng2-flatpickr [config]="exampleOptions" (change)="onChangeDatePickerStart($event)"></ng2-flatpickr>
+        <ng2-flatpickr  [config]="exampleOptions" (change)="onChangeDatePickerStart($event)"></ng2-flatpickr>
     </div>
 </td>
 <td>
     <div class="divTableCell">
-        <ng2-flatpickr [config]="exampleOptions" (change)="onChangeDatePickerEnd($event)"></ng2-flatpickr>
+        <ng2-flatpickr  [config]="exampleOptions" (change)="onChangeDatePickerEnd($event)"></ng2-flatpickr>
     </div>
 </td>
 <td>
