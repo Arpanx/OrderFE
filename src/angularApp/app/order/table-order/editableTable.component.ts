@@ -11,6 +11,7 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class EditableTableComponent implements OnChanges, OnInit {
+    public inputToChild: number;
     orders: Order[] = [];
     order: Order = new Order();
     p = 1;
@@ -25,7 +26,8 @@ export class EditableTableComponent implements OnChanges, OnInit {
     }
 
     first(_event: number) {
-        console.log(_event);
+        // console.log('from', _event);
+        this.inputToChild = _event;
     }
 
     addNewOrder(_event: number) {

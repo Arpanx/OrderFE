@@ -11,11 +11,13 @@ import { Configuration } from './../../app.constants';
 export class ItemService {
 
     private actionUrl: string;
+    private actionUrl2: string;
     private headers: HttpHeaders;
 
     constructor(private http: HttpClient, configuration: Configuration) {
 
         this.actionUrl = configuration.Server + 'api/item/';
+        this.actionUrl2 = configuration.Server + 'api/order/';
 
         this.headers = new HttpHeaders();
         this.headers = this.headers.set('Content-Type', 'application/json');
@@ -30,6 +32,10 @@ export class ItemService {
     getAllNew(startPage: number, pageSize: number)  {
         this.headers = this.headers.set('Pagination', startPage + ',' + pageSize);
         return this.http.get<any>(this.actionUrl, {observe: 'response', headers: this.headers });
+    }
+
+    getAllByOrderId(id: number)  {
+        return this.http.get<any>(this.actionUrl2 + id + '/items' );
     }
 
     getSingle(id: number): Observable<Item> {

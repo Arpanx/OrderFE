@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { OnChanges, OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ItemService } from '../../core/services/item-data.service';
 import { Item } from '../../models/item';
@@ -10,6 +10,7 @@ import { Item } from '../../models/item';
 })
 
 export class ItemsComponent implements OnChanges, OnInit {
+    @Input() data: number;
     items: Item[] = [];
     item: Item = new Item();
     p = 1;
@@ -23,8 +24,11 @@ export class ItemsComponent implements OnChanges, OnInit {
     constructor(private itemService: ItemService) {
     }
 
-    first(_event: number) {
-        console.log(_event);
+    ngOnChanges(changes: SimpleChanges) {
+        // console.log(changes.data.currentValue);
+        this.getItemsById(changes.data.currentValue);
+       // this.displayingIndeces = new Array(this.items.length);
+       // this.displayingIndeces.fill(true);
     }
 
     addNewOrder(_event: number) {
@@ -54,11 +58,6 @@ export class ItemsComponent implements OnChanges, OnInit {
 
     toggleEdit(index: number) {
         this.displayingIndeces[index] = !this.displayingIndeces[index];
-    }
-
-    ngOnChanges() {
-        this.displayingIndeces = new Array(this.items.length);
-        this.displayingIndeces.fill(true);
     }
 
     addOrder(item: Item) {
@@ -104,6 +103,23 @@ export class ItemsComponent implements OnChanges, OnInit {
                 this.NullableString = data.headers.get('Pagination') || 'Pagination: 1,10';
                 const obj: ServerHeaderResponse  = JSON.parse(this.NullableString);
                 this.count = Number(obj.TotalItems);
+            },
+            error => console.log(error),
+            // () => console.log('Get all complete')
+            );
+    }
+
+    getItemsById(OrderId: number) {
+        this.itemService
+            .getAllByOrderId(OrderId)
+            .subscribe(
+            data => {
+                this.items = data;
+                // this.displayingIndeces = new Array(this.items.length);
+                // this.displayingIndeces.fill(true);
+                // this.NullableString = data.headers.get('Pagination') || 'Pagination: 1,10';
+                // const obj: ServerHeaderResponse  = JSON.parse(this.NullableString);
+                // this.count = Number(obj.TotalItems);
             },
             error => console.log(error),
             // () => console.log('Get all complete')
