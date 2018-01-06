@@ -16,39 +16,41 @@ export class ItemsEditableRowComponent implements OnInit {
     maxDate = new Date(2018, 9, 15);
     bsStart: Date = new Date();
     bsEnd: Date = new Date();
+    dateString: string;
 
     @Input() item: { id: number, productName: string, timeStart: string, timeEnd: string, status: string, location: string, type: string };
     @Output() onToggleDisplay = new EventEmitter<any>();
     @Output() onDeleteOrder = new EventEmitter<any>();
 
-    locale = 'de';
+    locale = 'ru';
 
     constructor(private _localeService: BsLocaleService) {
     }
 
-
     ngOnInit() {
         console.log('YES');
         this._localeService.use(this.locale);
-        this.bsStart = new Date(this.item.timeStart.substr(0, 10));
-        this.bsEnd = new Date(this.item.timeStart.substr(0, 10));
-        // this.DateEnd = new Date(this.item.timeEnd.substr(0, 10));
+        this.bsStart = new Date(this.item.timeStart);
+        this.bsEnd = new Date(this.item.timeEnd);
     }
 
     onChangeDatePickerStart(event: any) {
-        const dateString = event.value;
-        const thisDateT = dateString.substr(6, 4) + '-' + dateString.substr(3, 2) + '-' + dateString.substr(0, 2);
-        const newDate = new Date(thisDateT);
-        this.item.timeStart = newDate.toISOString();
-        // console.log('date START', newDate.toISOString());
+        this.item.timeStart = this.toISO(event);
     }
 
     onChangeDatePickerEnd(event: any) {
-        const dateString = event.value;
-        const thisDateT = dateString.substr(6, 4) + '-' + dateString.substr(3, 2) + '-' + dateString.substr(0, 2);
-        const newDate = new Date(thisDateT);
-        this.item.timeEnd = newDate.toISOString();
-        // console.log('date END', newDate.toISOString());
+        this.item.timeEnd = this.toISO(event);
+    }
+
+    toISO(event: any) {
+        const re = /0[0-9]00/gi;
+        const str = String(event);
+        const res = str.replace(re, '0000');
+        const d = new Date(res);
+
+        return d.toJSON();
+        // Wed Feb 28 2018 00:00:00 GMT+0200 (Eastern Europe Standard Time)
+        // 2018-02-27T22:00:00.000Z
     }
 
     onChangeStatus(event: any) {

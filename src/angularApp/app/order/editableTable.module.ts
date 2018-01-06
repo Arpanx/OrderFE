@@ -13,11 +13,11 @@ import { EditableTableRoutes } from '../order/editableTable.routes';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Form1Component } from './form1/form1.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Ng2FlatpickrComponent } from 'ng2-flatpickr/ng2-flatpickr';
+// import { Ng2FlatpickrComponent } from 'ng2-flatpickr/ng2-flatpickr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/bs-moment';
-import { de } from 'ngx-bootstrap/locale';
-defineLocale('de', de);
+import { ru } from 'ngx-bootstrap/locale';
+defineLocale('ru', ru);
 
 @NgModule({
     imports: [
@@ -39,7 +39,7 @@ defineLocale('de', de);
         ItemsEditableRowComponent,
         ItemsDisplayRowComponent,
         ItemsDisplayHeaderComponent,
-        Ng2FlatpickrComponent,
+   //     Ng2FlatpickrComponent,
     ],
 
     exports: [
@@ -51,7 +51,7 @@ defineLocale('de', de);
         ItemsEditableRowComponent,
         ItemsDisplayRowComponent,
         ItemsDisplayHeaderComponent,
-        Ng2FlatpickrComponent,
+     //   Ng2FlatpickrComponent,
     ]
 })
 

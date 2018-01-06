@@ -10,10 +10,12 @@
 </td>
 <td>
     <div class="divTableCell">
-        <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [bsValue]="bsStart"
-            (bsValueChange)="onChangeDatePickerStart($event)">
+        <input type="text" class="form-control"  #dp="bsDatepicker" bsDatepicker [(ngModel)]="bsStart" 
+        (bsValueChange)="onChangeDatePickerStart($event)"       
+            >
     </div>
 </td>
+<!-- [bsValue]="bsStart" -->
 <td>
     <div class="divTableCell">
         <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker" bsDatepicker [bsValue]="bsEnd"
