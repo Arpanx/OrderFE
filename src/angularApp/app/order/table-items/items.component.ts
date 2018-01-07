@@ -47,13 +47,13 @@ export class ItemsComponent implements OnChanges, OnInit {
         }
     }
 
-    pageChanged(page: any) {
-        this.p = page;
-        this.getAllItems(page, 10);
-    }
+    // pageChanged(page: any) {
+    //     this.p = page;
+    //     this.getAllItems(page, 10);
+    // }
 
     ngOnInit(): void {
-        this.getAllItems(1, 10);
+        this.getItemsByOrderId(this.currentOrderId);
     }
 
     isDisplay(index: number) {
