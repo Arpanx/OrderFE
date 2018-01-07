@@ -51,7 +51,7 @@ export class ItemService {
             location: thingToAdd.location,
             type: thingToAdd.type,
             status: thingToAdd.status,
-            orderId:  1,
+            orderId:  thingToAdd.orderId,
         });
         return this.http.post<Item>(this.actionUrl, toAdd, { headers: this.headers });
     }

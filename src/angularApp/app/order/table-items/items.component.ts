@@ -14,7 +14,8 @@ export class ItemsComponent implements OnChanges, OnInit {
     items: Item[] = [];
     item: Item = new Item();
     p = 1;
-    tempstr: string;
+    currentOrderId = 1;
+    // tempstr: string;
     count = 10;
 
     tableHeader = {id: '#',  productName: 'productName', timeStart: 'timeStart', status: 'status', location: 'location', type: 'type'};
@@ -24,32 +25,41 @@ export class ItemsComponent implements OnChanges, OnInit {
     constructor(private itemService: ItemService) {
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-        // console.log(changes.data.currentValue);
-        this.getItemsById(changes.data.currentValue);
-       // this.displayingIndeces = new Array(this.items.length);
-       // this.displayingIndeces.fill(true);
+    ngOnChanges(_changes: SimpleChanges) {
+        if (_changes.data) {
+           this.currentOrderId = _changes.data.currentValue;
+           this.getItemsByOrderId(_changes.data.currentValue);
+        }
+        // this.displayingIndeces = new Array(this.items.length);
+        // this.displayingIndeces.fill(true);
     }
 
     addNewOrder(_event: number) {
+        this.displayingIndeces = new Array(this.items.length);
+        this.displayingIndeces.fill(true);
+        console.log('before', this.displayingIndeces);
         this.items.push(new Item());
+        console.log('after', this.displayingIndeces);
+        // this.displayingIndeces = new Array(this.items.length);
+        // this.displayingIndeces.fill(true);
     }
 
     updateOrderCheckId(item: Item) {
         if (!isNaN(item.id)) {
-            this.updateOrder(item);
+            this.updateItem(item);
         } else {
-            this.addOrder(item);
+            item.orderId = this.currentOrderId;
+            this.addItem(item);
         }
     }
 
     pageChanged(page: any) {
         this.p = page;
-        this.getAllOrders(page, 10);
+        this.getAllItems(page, 10);
     }
 
     ngOnInit(): void {
-        this.getAllOrders(1, 10);
+        this.getAllItems(1, 10);
     }
 
     isDisplay(index: number) {
@@ -60,39 +70,40 @@ export class ItemsComponent implements OnChanges, OnInit {
         this.displayingIndeces[index] = !this.displayingIndeces[index];
     }
 
-    addOrder(item: Item) {
+    addItem(item: Item) {
         this.itemService
             .add(item)
             .subscribe(() => {
-                this.getAllOrders(this.p, 10);
+                this.getItemsByOrderId(this.currentOrderId);
                 this.item = new Item();
             }, (error) => {
                 console.log(error);
             });
     }
 
-    updateOrder(item: Item) {
+    updateItem(item: Item) {
         this.itemService
             .update(item.id, item)
             .subscribe(() => {
-                this.getAllOrders(this.p, 10);
+                // this.getAllItems(this.p, 10);
+                this.getItemsByOrderId(this.currentOrderId);
                 this.item = new Item();
             }, (error) => {
                 console.log(error);
             });
     }
 
-    deleteOrder(item: Item) {
+    deleteItem(item: Item) {
         this.itemService
             .delete(item.id)
             .subscribe(() => {
-                this.getAllOrders(this.p, 10);
+                this.getAllItems(this.p, 10);
             }, (error) => {
                 console.log(error);
             });
     }
 
-    getAllOrders(startPage: number, pageSize: number) {
+    getAllItems(startPage: number, pageSize: number) {
         this.itemService
             .getAllNew(startPage, pageSize)
             .subscribe(
@@ -109,7 +120,7 @@ export class ItemsComponent implements OnChanges, OnInit {
             );
     }
 
-    getItemsById(OrderId: number) {
+    getItemsByOrderId(OrderId: number) {
         this.itemService
             .getAllByOrderId(OrderId)
             .subscribe(
