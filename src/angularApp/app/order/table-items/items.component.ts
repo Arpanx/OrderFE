@@ -15,7 +15,6 @@ export class ItemsComponent implements OnChanges, OnInit {
     item: Item = new Item();
     p = 1;
     currentOrderId = 1;
-    // tempstr: string;
     count = 10;
 
     tableHeader = {id: '#',  productName: 'productName', timeStart: 'timeStart', status: 'status', location: 'location', type: 'type'};
@@ -30,25 +29,20 @@ export class ItemsComponent implements OnChanges, OnInit {
            this.currentOrderId = _changes.data.currentValue;
            this.getItemsByOrderId(_changes.data.currentValue);
         }
-        // this.displayingIndeces = new Array(this.items.length);
-        // this.displayingIndeces.fill(true);
     }
 
     addNewOrder(_event: number) {
         this.displayingIndeces = new Array(this.items.length);
         this.displayingIndeces.fill(true);
-        console.log('before', this.displayingIndeces);
-        this.items.push(new Item());
-        console.log('after', this.displayingIndeces);
-        // this.displayingIndeces = new Array(this.items.length);
-        // this.displayingIndeces.fill(true);
+        const t = new Item();
+        t.orderId = this.currentOrderId;
+        this.items.push(t);
     }
 
     updateOrderCheckId(item: Item) {
         if (!isNaN(item.id)) {
             this.updateItem(item);
         } else {
-            item.orderId = this.currentOrderId;
             this.addItem(item);
         }
     }
@@ -85,7 +79,6 @@ export class ItemsComponent implements OnChanges, OnInit {
         this.itemService
             .update(item.id, item)
             .subscribe(() => {
-                // this.getAllItems(this.p, 10);
                 this.getItemsByOrderId(this.currentOrderId);
                 this.item = new Item();
             }, (error) => {
@@ -97,7 +90,7 @@ export class ItemsComponent implements OnChanges, OnInit {
         this.itemService
             .delete(item.id)
             .subscribe(() => {
-                this.getAllItems(this.p, 10);
+                this.getItemsByOrderId(this.currentOrderId);
             }, (error) => {
                 console.log(error);
             });
@@ -126,6 +119,8 @@ export class ItemsComponent implements OnChanges, OnInit {
             .subscribe(
             data => {
                 this.items = data;
+                this.displayingIndeces = new Array(this.items.length);
+                this.displayingIndeces.fill(true);
                 // this.displayingIndeces = new Array(this.items.length);
                 // this.displayingIndeces.fill(true);
                 // this.NullableString = data.headers.get('Pagination') || 'Pagination: 1,10';
