@@ -3,6 +3,7 @@ import { OnChanges, OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { OrderService } from '../../core/services/order-data.service';
 import { Order } from '../../models/order';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-editable-table',
@@ -22,10 +23,19 @@ export class EditableTableComponent implements OnChanges, OnInit {
     displayingIndeces: boolean[];
     model: NgbDateStruct;
 
-    constructor(private orderService: OrderService) {
+    constructor(private orderService: OrderService,
+        private toastrService: ToastrService) {
     }
 
-    first(_event: number) {
+    showSuccess(title: string, message: string) {
+        this.toastrService.success(message, title );
+    }
+
+    showError(title: string, message: string) {
+        this.toastrService.error(message, title);
+    }
+
+    showDetailByOrderId(_event: number) {
         // console.log('from', _event);
         this.inputToChild = _event;
     }
@@ -70,8 +80,10 @@ export class EditableTableComponent implements OnChanges, OnInit {
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
                 this.order = new Order();
+                this.showSuccess('add', 'Add Ok');
             }, (error) => {
                 console.log(error);
+                this.showError('Add', error.message);
             });
     }
 
@@ -81,8 +93,10 @@ export class EditableTableComponent implements OnChanges, OnInit {
             .subscribe(() => {
                 this.getAllOrders(this.p, 10);
                 this.order = new Order();
+                this.showSuccess('update', 'Update Ok');
             }, (error) => {
                 console.log(error);
+                this.showError('Update', error.message);
             });
     }
 
@@ -93,6 +107,7 @@ export class EditableTableComponent implements OnChanges, OnInit {
                 this.getAllOrders(this.p, 10);
             }, (error) => {
                 console.log(error);
+                this.showError('Delete', error.message);
             });
     }
 
@@ -107,10 +122,16 @@ export class EditableTableComponent implements OnChanges, OnInit {
                 this.NullableString = data.headers.get('Pagination') || 'Pagination: 1,10';
                 const obj: ServerHeaderResponse  = JSON.parse(this.NullableString);
                 this.count = Number(obj.TotalItems);
-            },
-            error => console.log(error),
-            // () => console.log('Get all complete')
-            );
+            }, (error) => {
+                console.log(error),
+                // () => console.log('Get all complete')
+                this.showError('Delete', error.message);
+            });
     }
 }
 
+export class ErrorResponse {
+    error: any[];
+    headers: any[];
+    // message
+}

@@ -28,7 +28,7 @@ export class ItemsEditableRowComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('YES');
+        // console.log('YES');
         this._localeService.use(this.locale);
         this.bsStart = new Date(this.item.timeStart);
         this.bsEnd = new Date(this.item.timeEnd);

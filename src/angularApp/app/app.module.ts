@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -19,8 +20,9 @@ import { SharedModule } from './shared/shared.module';
         CommonModule,
         FormsModule,
         EditableTableModule,
-        // BrowserAnimationsModule,
+        BrowserAnimationsModule,
         CoreModule.forRoot(),
+        ToastrModule.forRoot(), // ToastrModule added
     ],
 
     declarations: [
