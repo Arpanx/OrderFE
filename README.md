@@ -4,3 +4,5 @@
 4) npm run webpack-dev
 5) npm run start
 6) see http://localhost:8080/
+
+Bootstrap editable table Angular5
